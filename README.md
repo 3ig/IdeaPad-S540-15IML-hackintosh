@@ -19,6 +19,7 @@ Working:
 - Sound (using VoodooHDA volume kind of low)
 - Keyboard
 - Card reader
+- Camera
 - USBs
 - Brightness adjustment
 - Battery managment
@@ -26,8 +27,8 @@ Working:
 - Sleep / Wake
 
 Not working:
-- Touchpad
-- Fingerprint reader
+- Touchpad (VoodooI2C doesn't support CometLake I2C Controllers as of now)
+- Fingerprint reader (recognised but can't be used)
 - Bluetooth / Wifi (currently using an USB WiFi)
 - Micron 2200 NVMe SSD (this is not even working on real Apple hardware)
 
