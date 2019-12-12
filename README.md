@@ -3,8 +3,8 @@
 | Specifications | Details |
 |:-: |:-: |
 | Processor | Intel Core i5-10210U  |
-| Memory | 8gb DDR4 2400MHz (4gb soldiered on board) |
-| HDD | 1TB NVMe SSD Micron 2200 + 512GB SATA Samsung 860 EVO |
+| Memory | 20gb DDR4 2400MHz (4gb soldiered on board) |
+| HDD | 1TB NVMe SSD Micron 2200 + 1TB SATA Samsung 860 EVO |
 | Graphics Card | Intel HD Graphics CFL CRB |
 | ex. Graphics Card |  Nvidia MX250 2GB |
 | Monitor | 15.6 inch 1920x1080 |
