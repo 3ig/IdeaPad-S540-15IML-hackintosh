@@ -33,3 +33,4 @@ Not working:
 - Micron 2200 NVMe SSD (this is not even working on real Apple hardware)
 
 NOTE: If you have a compatable NVMe SSD remove SSDT_NVMe-Pcc.aml from /CLOVER/ACPI/Patched
+NOTE2: Don't update to the latest BIOS version CNCN11WW if you plan to install OSX on the SATA drive. For some reason Lenovo forces all SATA drives to work in RST mode when there is a NVMe drive present in the system and they can not be switched back to AHCI. There will be no updates here until Lenovo fixes this or i get a OSX compatible NVMe drive.
