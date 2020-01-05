@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20190509 (64-bit version)
+ * Copyright (c) 2000 - 2019 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-4-CB-01.aml, Sun Nov 24 01:48:46 2019
+ * Disassembly of SSDT-4-CB-01.aml, Fri Jan  3 13:11:57 2020
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -20,38 +20,38 @@
  */
 DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 {
-    External (_SB_.PCI0.RP01.PXSX, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.RP05.PXSX, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.RP09.PXSX, DeviceObj)    // (from opcode)
-    External (_SB_.PCI0.RP21.PXSX, DeviceObj)    // (from opcode)
-    External (_SB_.UBTC.RUCC, MethodObj)    // 2 Arguments (from opcode)
-    External (DPM1, IntObj)    // (from opcode)
-    External (DPM2, IntObj)    // (from opcode)
-    External (DPM3, IntObj)    // (from opcode)
-    External (NDUS, IntObj)    // (from opcode)
-    External (NTUS, IntObj)    // (from opcode)
-    External (RPS0, IntObj)    // (from opcode)
-    External (RPS1, IntObj)    // (from opcode)
-    External (TBSE, IntObj)    // (from opcode)
-    External (TBTS, IntObj)    // (from opcode)
-    External (TP1D, IntObj)    // (from opcode)
-    External (TP1P, IntObj)    // (from opcode)
-    External (TP1T, IntObj)    // (from opcode)
-    External (TP2D, IntObj)    // (from opcode)
-    External (TP2P, IntObj)    // (from opcode)
-    External (TP2T, IntObj)    // (from opcode)
-    External (TP3D, IntObj)    // (from opcode)
-    External (TP3P, IntObj)    // (from opcode)
-    External (TP3T, IntObj)    // (from opcode)
-    External (TP4D, IntObj)    // (from opcode)
-    External (TP4P, IntObj)    // (from opcode)
-    External (TP4T, IntObj)    // (from opcode)
-    External (TP5D, IntObj)    // (from opcode)
-    External (TP5P, IntObj)    // (from opcode)
-    External (TP5T, IntObj)    // (from opcode)
-    External (TP6D, IntObj)    // (from opcode)
-    External (TP6P, IntObj)    // (from opcode)
-    External (TP6T, IntObj)    // (from opcode)
+    External (_SB_.PCI0.RP01.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP05.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP09.PXSX, DeviceObj)
+    External (_SB_.PCI0.RP21.PXSX, DeviceObj)
+    External (_SB_.UBTC.RUCC, MethodObj)    // 2 Arguments
+    External (DPM1, IntObj)
+    External (DPM2, IntObj)
+    External (DPM3, IntObj)
+    External (NDUS, IntObj)
+    External (NTUS, IntObj)
+    External (RPS0, IntObj)
+    External (RPS1, IntObj)
+    External (TBSE, IntObj)
+    External (TBTS, IntObj)
+    External (TP1D, IntObj)
+    External (TP1P, IntObj)
+    External (TP1T, IntObj)
+    External (TP2D, IntObj)
+    External (TP2P, IntObj)
+    External (TP2T, IntObj)
+    External (TP3D, IntObj)
+    External (TP3P, IntObj)
+    External (TP3T, IntObj)
+    External (TP4D, IntObj)
+    External (TP4P, IntObj)
+    External (TP4T, IntObj)
+    External (TP5D, IntObj)
+    External (TP5P, IntObj)
+    External (TP5T, IntObj)
+    External (TP6D, IntObj)
+    External (TP6P, IntObj)
+    External (TP6T, IntObj)
 
     If (LAnd (LEqual (TBTS, One), LOr (LEqual (RPS0, One), LEqual (RPS1, One))))
     {
@@ -180,18 +180,18 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                                 Buffer (0x10){}
                             })
                             CreateField (DerefOf (Index (PCKG, Zero)), Zero, 0x07, REV)
-                            Store (One, REV)
+                            Store (One, REV) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.REV_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x40, One, VISI)
-                            Store (Arg0, VISI)
+                            Store (Arg0, VISI) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.VISI */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x57, 0x08, GPOS)
-                            Store (Arg1, GPOS)
+                            Store (Arg1, GPOS) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.GPOS */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x4A, 0x04, SHAP)
-                            Store (One, SHAP)
+                            Store (One, SHAP) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.SHAP */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x20, 0x10, WID)
-                            Store (0x08, WID)
+                            Store (0x08, WID) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.WID_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x30, 0x10, HGT)
-                            Store (0x03, HGT)
-                            Return (PCKG)
+                            Store (0x03, HGT) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.HGT_ */
+                            Return (PCKG) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TPLD.PCKG */
                         }
 
                         Method (TUPC, 2, Serialized)
@@ -205,7 +205,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                             })
                             Store (Arg0, Index (PCKG, Zero))
                             Store (Arg1, Index (PCKG, One))
-                            Return (PCKG)
+                            Return (PCKG) /* \_SB_.PCI0.RP01.PXSX.TBDU.XHC_.RHUB.TUPC.PCKG */
                         }
 
                         If (LEqual (FPSP (One), One))
@@ -436,18 +436,18 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                                 Buffer (0x10){}
                             })
                             CreateField (DerefOf (Index (PCKG, Zero)), Zero, 0x07, REV)
-                            Store (One, REV)
+                            Store (One, REV) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.REV_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x40, One, VISI)
-                            Store (Arg0, VISI)
+                            Store (Arg0, VISI) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.VISI */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x57, 0x08, GPOS)
-                            Store (Arg1, GPOS)
+                            Store (Arg1, GPOS) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.GPOS */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x4A, 0x04, SHAP)
-                            Store (One, SHAP)
+                            Store (One, SHAP) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.SHAP */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x20, 0x10, WID)
-                            Store (0x08, WID)
+                            Store (0x08, WID) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.WID_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x30, 0x10, HGT)
-                            Store (0x03, HGT)
-                            Return (PCKG)
+                            Store (0x03, HGT) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.HGT_ */
+                            Return (PCKG) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TPLD.PCKG */
                         }
 
                         Method (TUPC, 2, Serialized)
@@ -461,7 +461,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                             })
                             Store (Arg0, Index (PCKG, Zero))
                             Store (Arg1, Index (PCKG, One))
-                            Return (PCKG)
+                            Return (PCKG) /* \_SB_.PCI0.RP05.PXSX.TBDU.XHC_.RHUB.TUPC.PCKG */
                         }
 
                         If (LEqual (FPSP (One), One))
@@ -692,18 +692,18 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                                 Buffer (0x10){}
                             })
                             CreateField (DerefOf (Index (PCKG, Zero)), Zero, 0x07, REV)
-                            Store (One, REV)
+                            Store (One, REV) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.REV_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x40, One, VISI)
-                            Store (Arg0, VISI)
+                            Store (Arg0, VISI) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.VISI */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x57, 0x08, GPOS)
-                            Store (Arg1, GPOS)
+                            Store (Arg1, GPOS) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.GPOS */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x4A, 0x04, SHAP)
-                            Store (One, SHAP)
+                            Store (One, SHAP) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.SHAP */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x20, 0x10, WID)
-                            Store (0x08, WID)
+                            Store (0x08, WID) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.WID_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x30, 0x10, HGT)
-                            Store (0x03, HGT)
-                            Return (PCKG)
+                            Store (0x03, HGT) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.HGT_ */
+                            Return (PCKG) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TPLD.PCKG */
                         }
 
                         Method (TUPC, 2, Serialized)
@@ -717,7 +717,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                             })
                             Store (Arg0, Index (PCKG, Zero))
                             Store (Arg1, Index (PCKG, One))
-                            Return (PCKG)
+                            Return (PCKG) /* \_SB_.PCI0.RP09.PXSX.TBDU.XHC_.RHUB.TUPC.PCKG */
                         }
 
                         If (LEqual (FPSP (One), One))
@@ -948,18 +948,18 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                                 Buffer (0x10){}
                             })
                             CreateField (DerefOf (Index (PCKG, Zero)), Zero, 0x07, REV)
-                            Store (One, REV)
+                            Store (One, REV) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.REV_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x40, One, VISI)
-                            Store (Arg0, VISI)
+                            Store (Arg0, VISI) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.VISI */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x57, 0x08, GPOS)
-                            Store (Arg1, GPOS)
+                            Store (Arg1, GPOS) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.GPOS */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x4A, 0x04, SHAP)
-                            Store (One, SHAP)
+                            Store (One, SHAP) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.SHAP */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x20, 0x10, WID)
-                            Store (0x08, WID)
+                            Store (0x08, WID) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.WID_ */
                             CreateField (DerefOf (Index (PCKG, Zero)), 0x30, 0x10, HGT)
-                            Store (0x03, HGT)
-                            Return (PCKG)
+                            Store (0x03, HGT) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.HGT_ */
+                            Return (PCKG) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TPLD.PCKG */
                         }
 
                         Method (TUPC, 2, Serialized)
@@ -973,7 +973,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                             })
                             Store (Arg0, Index (PCKG, Zero))
                             Store (Arg1, Index (PCKG, One))
-                            Return (PCKG)
+                            Return (PCKG) /* \_SB_.PCI0.RP21.PXSX.TBDU.XHC_.RHUB.TUPC.PCKG */
                         }
 
                         If (LEqual (FPSP (One), One))

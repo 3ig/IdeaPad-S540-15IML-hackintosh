@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20190509 (64-bit version)
+ * Copyright (c) 2000 - 2019 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-3-CB-01.aml, Sun Nov 24 01:48:46 2019
+ * Disassembly of SSDT-3-CB-01.aml, Fri Jan  3 13:11:57 2020
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -20,27 +20,27 @@
  */
 DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 {
-    External (_SB_.PDTS, UnknownObj)    // (from opcode)
-    External (_TZ_.TZ00._TMP, UnknownObj)    // (from opcode)
-    External (PAMT, UnknownObj)    // (from opcode)
-    External (TSDB, UnknownObj)    // (from opcode)
+    External (_SB_.PDTS, UnknownObj)
+    External (_TZ_.TZ00._TMP, UnknownObj)
+    External (PAMT, UnknownObj)
+    External (TSDB, UnknownObj)
 
     Scope (\_SB)
     {
         Device (PTID)
         {
-            Name (_HID, EisaId ("INT340E"))  // _HID: Hardware ID
-            Name (_CID, EisaId ("PNP0C02"))  // _CID: Compatible ID
+            Name (_HID, EisaId ("INT340E") /* Motherboard Resources */)  // _HID: Hardware ID
+            Name (_CID, EisaId ("PNP0C02") /* PNP Motherboard Resources */)  // _CID: Compatible ID
             Name (IVER, 0x00030000)
             Name (_STA, 0x0F)  // _STA: Status
             Method (TSDL, 0, NotSerialized)
             {
                 If (LEqual (TSDB, One))
                 {
-                    Return (TSD2)
+                    Return (TSD2) /* \_SB_.PTID.TSD2 */
                 }
 
-                Return (TSD1)
+                Return (TSD1) /* \_SB_.PTID.TSD1 */
             }
 
             Name (TSD1, Package (0x26)
@@ -170,10 +170,10 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             {
                 If (LEqual (TSDB, One))
                 {
-                    Return (OSD2)
+                    Return (OSD2) /* \_SB_.PTID.OSD2 */
                 }
 
-                Return (OSD1)
+                Return (OSD1) /* \_SB_.PTID.OSD1 */
             }
 
             Name (OSD1, Package (0x15)
@@ -260,7 +260,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     Store (Local0, Index (TMPX, 0x03))
                     Store (Local0, Index (TMPX, 0x04))
                     Store (\_TZ.TZ00._TMP, Index (TMPX, 0x0D))
-                    Return (TMPX)
+                    Return (TMPX) /* \_SB_.PTID.TSDD.TMPX */
                 }
 
                 Name (TMPV, Package (0x14)
@@ -293,7 +293,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 Store (Local0, Index (TMPV, 0x03))
                 Store (Local0, Index (TMPV, 0x04))
                 Store (\_TZ.TZ00._TMP, Index (TMPV, 0x0E))
-                Return (TMPV)
+                Return (TMPV) /* \_SB_.PTID.TSDD.TMPV */
             }
 
             Method (PSDD, 0, Serialized)
@@ -320,7 +320,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     0x80000000, 
                     0x80000000
                 })
-                Return (PWRV)
+                Return (PWRV) /* \_SB_.PTID.PSDD.PWRV */
             }
 
             Method (OSDD, 0, Serialized)
@@ -363,16 +363,16 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             {
                 If (PAMT)
                 {
-                    Return (PADA)
+                    Return (PADA) /* \_SB_.PTID.PADA */
                 }
 
-                Return (PADD)
+                Return (PADD) /* \_SB_.PTID.PADD */
             }
 
             Method (RPMD, 0, Serialized)
             {
                 Name (MTMP, Buffer (0x1A){})
-                Return (MTMP)
+                Return (MTMP) /* \_SB_.PTID.RPMD.MTMP */
             }
 
             Method (WPMD, 1, NotSerialized)

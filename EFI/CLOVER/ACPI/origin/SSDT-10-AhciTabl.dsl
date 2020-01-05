@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20190509 (64-bit version)
+ * Copyright (c) 2000 - 2019 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-10-AhciTabl.aml, Sun Nov 24 01:48:46 2019
+ * Disassembly of SSDT-10-AhciTabl.aml, Fri Jan  3 13:11:57 2020
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -20,17 +20,17 @@
  */
 DefinitionBlock ("", "SSDT", 2, "Insyde", "AhciTabl", 0x00001000)
 {
-    External (_SB_.PCI0, DeviceObj)    // (from opcode)
+    External (_SB_.PCI0, DeviceObj)
 
     Scope (\_SB.PCI0)
     {
         Name (SFRZ, Buffer (0x07)
         {
-             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF5       
+             0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF5         // .......
         })
         Method (GTF, 0, NotSerialized)
         {
-            Return (SFRZ)
+            Return (SFRZ) /* \_SB_.PCI0.SFRZ */
         }
     }
 }

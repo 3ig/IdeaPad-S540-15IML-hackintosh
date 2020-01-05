@@ -1,4 +1,4 @@
-# Lenovo IdeaPad S540-15IML (Catalina hackintosh)
+# Lenovo IdeaPad S540-15IML (Catalina hackintosh) bios version CNCN11WW
 
 | Specifications | Details |
 |:-: |:-: |
@@ -15,22 +15,25 @@
 
 #### Current status:
 Working:
-- Intel Graphics (MX250 disabled) (HDMI not tested)
-- Sound (using VoodooHDA volume kind of low)
+- Intel Graphics (MX250 disabled) (HDMI works)
+- Sound / Mic (mic is noisy install VoodooHDA PrefPane to tweak its input volume)
 - Keyboard
 - Card reader
 - Camera
 - USBs
 - Brightness adjustment
-- Battery managment
+- Battery managment (7 / 8 hour battery with latest BIOS)
 - Power managment
-- Sleep / Wake
 
 Not working:
-- Touchpad (VoodooI2C doesn't support CometLake I2C Controllers as of now)
+- Sleep / Wake (use to work ... kind of... now it can't wake up)
+- Touchpad (VoodooI2C still can't play nice with CometLake I2C Controllers )
 - Fingerprint reader (recognised but can't be used)
 - Bluetooth / Wifi (currently using an USB WiFi)
 - Micron 2200 NVMe SSD (this is not even working on real Apple hardware)
 
-NOTE: If you have a compatable NVMe SSD remove SSDT_NVMe-Pcc.aml from /CLOVER/ACPI/Patched
-NOTE2: Don't update to the latest BIOS version CNCN11WW if you plan to install OSX on the SATA drive. For some reason Lenovo forces all SATA drives to work in RST mode when there is a NVMe drive present in the system and they can not be switched back to AHCI. There will be no updates here until Lenovo fixes this or i get a OSX compatible NVMe drive.
+
+###### NOTE: 
+If you have a compatable NVMe SSD remove SSDT_NVMe-Pcc.aml from /CLOVER/ACPI/Patched
+###### NOTE2: 
+Bios version CNCN11WW forces RST storage controller mode on the SATA drive so i added SATA-RAID-unsupported.kext to boot my system. Even if you are installed on the nvme drive you need this kext to see and open sata devices in osx.

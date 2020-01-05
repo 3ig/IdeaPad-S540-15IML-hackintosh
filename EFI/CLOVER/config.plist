@@ -29,17 +29,53 @@
 			<array>
 				<dict>
 					<key>Comment</key>
+					<string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>T1NJRA==</data>
+					<key>Replace</key>
+					<data>WFNJRA==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _OSI to XOSI</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>X09TSQ==</data>
+					<key>Replace</key>
+					<data>WE9TSQ==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _DSM to XDSM</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>X0RTTQ==</data>
+					<key>Replace</key>
+					<data>WERTTQ==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change H_EC to EC</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>SF9FQw==</data>
+					<key>Replace</key>
+					<data>RUNfXw==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>change HDAS to HDEF</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					SERBUw==
-					</data>
+					<data>SERBUw==</data>
 					<key>Replace</key>
-					<data>
-					SERFRg==
-					</data>
+					<data>SERFRg==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -47,27 +83,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					SEVDSQ==
-					</data>
+					<data>SEVDSQ==</data>
 					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change MEI to IMEI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					TUVJXw==
-					</data>
-					<key>Replace</key>
-					<data>
-					SU1FSQ==
-					</data>
+					<data>SU1FSQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
@@ -75,41 +93,9 @@
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>
-					R0ZYMA==
-					</data>
+					<data>R0ZYMA==</data>
 					<key>Replace</key>
-					<data>
-					SUdQVQ==
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change Method(GPRW,2,N) to XPRW, pair with SSDT-GPRW.aml</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					R1BSVwI=
-					</data>
-					<key>Replace</key>
-					<data>
-					WFBSVwI=
-					</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _OSI to XOSI, pair with SSDT-XOSI.aml</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>
-					X09TSQ==
-					</data>
-					<key>Replace</key>
-					<data>
-					WE9TSQ==
-					</data>
+					<data>SUdQVQ==</data>
 				</dict>
 			</array>
 		</dict>
@@ -156,7 +142,7 @@
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>dart=0 -v alcid=18</string>
+		<string>dart=0 plugin-type=1 -v</string>
 		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
@@ -213,9 +199,7 @@
 						<key>Key</key>
 						<string>subsystem-vendor-id</string>
 						<key>Value</key>
-						<data>
-						axAAAA==
-						</data>
+						<data>axAAAA==</data>
 					</dict>
 				</array>
 				<key>PciAddr</key>
@@ -225,79 +209,68 @@
 		<key>Audio</key>
 		<dict>
 			<key>Inject</key>
-			<string>No</string>
-			<key>ResetHDA</key>
-			<true/>
+			<integer>0</integer>
+		</dict>
+		<key>FakeID</key>
+		<dict>
+			<key>#IntelGFX</key>
+			<string>0x59168086</string>
+			<key>#Kaby Lake-Comment</key>
+			<string>To avoid automatic Clover fake device-id (Skylake) injection</string>
 		</dict>
 		<key>Properties</key>
 		<dict>
-			<key>PciRoot(0)/Pci(0x1f,0x3)</key>
+			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
 			<dict>
-				<key>#no-controller-patch</key>
-				<integer>1</integer>
 				<key>AAPL,slot-name</key>
-				<string>Internal@0,31,3</string>
+				<string>Internal</string>
 				<key>device_type</key>
-				<string>Audio device</string>
+				<string>Multimedia audio controller</string>
 				<key>hda-gfx</key>
 				<string>onboard-1</string>
 				<key>layout-id</key>
-				<integer>18</integer>
+				<integer>11</integer>
+				<key>model</key>
+				<string>ALC257 layout-id:11</string>
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
+				<key>AAPL,GfxYTile</key>
+				<data>AQAAAA==</data>
 				<key>AAPL,ig-platform-id</key>
-				<data>
-				AACbPg==
-				</data>
+				<data>AACbPg==</data>
+				<key>AAPL,slot-name</key>
+				<string>Internal@0,2,0</string>
 				<key>device-id</key>
-				<data>
-				mz4AAA==
-				</data>
+				<data>mz4AAA==</data>
+				<key>device_type</key>
+				<string>Display controller</string>
 				<key>disable-external-gpu</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-hdmi20</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>enable-lspcon-support</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-busid</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-has-lspcon</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-preferred-lspcon-mode</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-con1-type</key>
-				<data>
-				AAgAAA==
-				</data>
+				<data>AAgAAA==</data>
 				<key>framebuffer-fbmem</key>
-				<data>
-				AACQAA==
-				</data>
+				<data>AACQAA==</data>
 				<key>framebuffer-patch-enable</key>
-				<data>
-				AQAAAA==
-				</data>
+				<data>AQAAAA==</data>
 				<key>framebuffer-stolenmem</key>
-				<data>
-				AAAwAQ==
-				</data>
+				<data>AAAwAQ==</data>
+				<key>hda-gfx</key>
+				<string>onboard-1</string>
+				<key>model</key>
+				<string>Intel UHD Graphics 630 (Mobile)</string>
 			</dict>
 		</dict>
 		<key>USB</key>
@@ -310,7 +283,7 @@
 			<true/>
 		</dict>
 		<key>UseIntelHDMI</key>
-		<false/>
+		<true/>
 	</dict>
 	<key>DisableDrivers</key>
 	<array>
@@ -385,11 +358,11 @@
 		<key>Inject</key>
 		<dict>
 			<key>ATI</key>
-			<false/>
+			<true/>
 			<key>Intel</key>
 			<false/>
 			<key>NVidia</key>
-			<false/>
+			<true/>
 		</dict>
 	</dict>
 	<key>KernelAndKextPatches</key>
@@ -406,92 +379,23 @@
 		<true/>
 		<key>KernelPm</key>
 		<true/>
-		<key>KernelToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>MSR 0xE2 _xcpm_idle instant reboot(c) Pike R. Alpha</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				ILniAAAADzA=
-				</data>
-				<key>Replace</key>
-				<data>
-				ILniAAAAkJA=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Disable panic kext logging on 10.13 release kernel (credit vit9696)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				igKEwHRE
-				</data>
-				<key>MatchOS</key>
-				<string>10.13.x</string>
-				<key>Replace</key>
-				<data>
-				igKEwOtE
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Disable panic kext logging on 10.14 release kernel (credit vit9696)</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>
-				igKEwHRC
-				</data>
-				<key>MatchOS</key>
-				<string>10.14.x</string>
-				<key>Replace</key>
-				<data>
-				igKEwOtC
-				</data>
-			</dict>
-		</array>
 		<key>KextsToPatch</key>
 		<array>
 			<dict>
 				<key>Comment</key>
-				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
+				<string>DVMT for AppleIntelCFLGraphicsFramebuffer﻿ (Credits DalianSky) for 10.15.x</string>
 				<key>Disabled</key>
 				<false/>
 				<key>Find</key>
-				<data>
-				SU9LaXQ=
-				</data>
+				<data>D4KnAwAA</data>
 				<key>InfoPlistPatch</key>
-				<true/>
-				<key>Name</key>
-				<string>com.apple.driver.AppleIntelLpssI2C</string>
-				<key>Replace</key>
-				<data>
-				SU9LaXM=
-				</data>
-			</dict>
-			<dict>
-				<key>Comment</key>
-				<string>Prevent Apple I2C kexts from attaching to I2C controllers, credit CoolStar</string>
-				<key>Disabled</key>
 				<false/>
-				<key>Find</key>
-				<data>
-				SU9LaXQ=
-				</data>
-				<key>InfoPlistPatch</key>
-				<true/>
+				<key>MatchOS</key>
+				<string>10.15.x</string>
 				<key>Name</key>
-				<string>com.apple.driver.AppleIntelLpssI2CController</string>
+				<string>AppleIntelCFLGraphicsFramebuffer</string>
 				<key>Replace</key>
-				<data>
-				SU9LaXM=
-				</data>
+				<data>D4IAAAAA</data>
 			</dict>
 		</array>
 	</dict>
@@ -501,18 +405,18 @@
 		<string>0x28</string>
 		<key>CsrActiveConfig</key>
 		<string>0x67</string>
+		<key>ROM</key>
+		<data>vAjZ5vl3</data>
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
 		<key>ProductName</key>
 		<string>MacBookPro15,2</string>
-		<key>Trust</key>
-		<true/>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
 		<key>InjectKexts</key>
-		<string>Yes</string>
+		<string>Detect</string>
 	</dict>
 </dict>
 </plist>

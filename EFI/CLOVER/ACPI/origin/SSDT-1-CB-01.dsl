@@ -1,11 +1,11 @@
 /*
  * Intel ACPI Component Architecture
- * AML/ASL+ Disassembler version 20180427 (64-bit version)(RM)
- * Copyright (c) 2000 - 2018 Intel Corporation
+ * AML/ASL+ Disassembler version 20190509 (64-bit version)
+ * Copyright (c) 2000 - 2019 Intel Corporation
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of SSDT-1-CB-01.aml, Sun Nov 24 01:48:46 2019
+ * Disassembly of SSDT-1-CB-01.aml, Fri Jan  3 13:11:57 2020
  *
  * Original Table Header:
  *     Signature        "SSDT"
@@ -20,24 +20,24 @@
  */
 DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 {
-    External (_SB_.OSCP, IntObj)    // (from opcode)
-    External (_SB_.PR00, DeviceObj)    // (from opcode)
-    External (_SB_.PR01, DeviceObj)    // (from opcode)
-    External (_SB_.PR02, DeviceObj)    // (from opcode)
-    External (_SB_.PR03, DeviceObj)    // (from opcode)
-    External (_SB_.PR04, DeviceObj)    // (from opcode)
-    External (_SB_.PR05, DeviceObj)    // (from opcode)
-    External (_SB_.PR06, DeviceObj)    // (from opcode)
-    External (_SB_.PR07, DeviceObj)    // (from opcode)
-    External (_SB_.PR08, DeviceObj)    // (from opcode)
-    External (_SB_.PR09, DeviceObj)    // (from opcode)
-    External (_SB_.PR10, DeviceObj)    // (from opcode)
-    External (_SB_.PR11, DeviceObj)    // (from opcode)
-    External (_SB_.PR12, DeviceObj)    // (from opcode)
-    External (_SB_.PR13, DeviceObj)    // (from opcode)
-    External (_SB_.PR14, DeviceObj)    // (from opcode)
-    External (_SB_.PR15, DeviceObj)    // (from opcode)
-    External (OSYS, UnknownObj)    // (from opcode)
+    External (_SB_.OSCP, IntObj)
+    External (_SB_.PR00, DeviceObj)
+    External (_SB_.PR01, DeviceObj)
+    External (_SB_.PR02, DeviceObj)
+    External (_SB_.PR03, DeviceObj)
+    External (_SB_.PR04, DeviceObj)
+    External (_SB_.PR05, DeviceObj)
+    External (_SB_.PR06, DeviceObj)
+    External (_SB_.PR07, DeviceObj)
+    External (_SB_.PR08, DeviceObj)
+    External (_SB_.PR09, DeviceObj)
+    External (_SB_.PR10, DeviceObj)
+    External (_SB_.PR11, DeviceObj)
+    External (_SB_.PR12, DeviceObj)
+    External (_SB_.PR13, DeviceObj)
+    External (_SB_.PR14, DeviceObj)
+    External (_SB_.PR15, DeviceObj)
+    External (OSYS, UnknownObj)
 
     Scope (\)
     {
@@ -208,7 +208,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             CreateField (Arg0, 0x40, Multiply (Local1, 0x08), TEMP)
             Store (Buffer (0x04)
                 {
-                     0x00, 0x00, 0x00, 0x00                         
+                     0x00, 0x00, 0x00, 0x00                           // ....
                 }, Local3)
             Concatenate (Local3, TEMP, Local2)
             Return (COSC (ToUUID ("4077a616-290c-47be-9ebd-d87058713953"), REVS, SIZE, Local2))
@@ -226,15 +226,16 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             CreateDWordField (Local0, 0x04, EID1)
             CreateDWordField (Local0, 0x08, EID2)
             CreateDWordField (Local0, 0x0C, EID3)
-            If (LNot (LAnd (LAnd (LEqual (IID0, EID0), LEqual (IID1, EID1)), LAnd (LEqual (IID2, EID2), LEqual (IID3, EID3)))))
+            If (LNot (LAnd (LAnd (LEqual (IID0, EID0), LEqual (IID1, EID1)), LAnd (LEqual (
+                IID2, EID2), LEqual (IID3, EID3)))))
             {
-                Store (0x06, STS0)
+                Store (0x06, STS0) /* \_SB_.PR00.COSC.STS0 */
                 Return (Arg3)
             }
 
             If (LNotEqual (Arg1, One))
             {
-                Store (0x0A, STS0)
+                Store (0x0A, STS0) /* \_SB_.PR00.COSC.STS0 */
                 Return (Arg3)
             }
 
@@ -252,18 +253,19 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (STS0, One))
             {
-                And (CAP0, 0x0BFF, CAP0)
+                And (CAP0, 0x0BFF, CAP0) /* \_SB_.PR00.GCAP.CAP0 */
                 Return (Zero)
             }
 
-            Or (And (PC00, 0x7FFFFFFF), CAP0, PC00)
+            Or (And (PC00, 0x7FFFFFFF), CAP0, PC00) /* \PC00 */
             If (And (CFGD, 0x7A))
             {
-                If (LAnd (LAnd (And (CFGD, 0x0200), And (PC00, 0x18)), LNot (And (SDTL, 0x02))))
+                If (LAnd (LAnd (And (CFGD, 0x0200), And (PC00, 0x18)), LNot (
+                    And (SDTL, 0x02))))
                 {
-                    Or (SDTL, 0x02, SDTL)
+                    Or (SDTL, 0x02, SDTL) /* \SDTL */
                     OperationRegion (CST0, SystemMemory, DerefOf (Index (SSDT, 0x07)), DerefOf (Index (SSDT, 0x08)))
-                    Load (CST0, HC0)
+                    Load (CST0, HC0) /* \_SB_.PR00.HC0_ */
                 }
             }
 
@@ -271,17 +273,18 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             {
                 If (LAnd (And (CFGD, One), LNot (And (SDTL, 0x08))))
                 {
-                    Or (SDTL, 0x08, SDTL)
+                    Or (SDTL, 0x08, SDTL) /* \SDTL */
                     OperationRegion (IST0, SystemMemory, DerefOf (Index (SSDT, One)), DerefOf (Index (SSDT, 0x02)))
-                    Load (IST0, HI0)
+                    Load (IST0, HI0) /* \_SB_.PR00.HI0_ */
                 }
             }
 
-            If (LAnd (LOr (And (CFGD, One), And (CFGD, 0x00400000)), LNot (And (SDTL, 0x0100))))
+            If (LAnd (LOr (And (CFGD, One), And (CFGD, 0x00400000)), LNot (
+                And (SDTL, 0x0100))))
             {
-                Or (SDTL, 0x0100, SDTL)
+                Or (SDTL, 0x0100, SDTL) /* \SDTL */
                 OperationRegion (PSD0, SystemMemory, DerefOf (Index (SSDT, 0x16)), DerefOf (Index (SSDT, 0x17)))
-                Load (PSD0, HP0)
+                Load (PSD0, HP0) /* \_SB_.PR00.HP0_ */
             }
 
             If (LGreaterEqual (OSYS, 0x07DF))
@@ -290,13 +293,13 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 {
                     If (And (\_SB.OSCP, 0x40))
                     {
-                        Or (SDTL, 0x40, SDTL)
+                        Or (SDTL, 0x40, SDTL) /* \SDTL */
                         OperationRegion (HWP0, SystemMemory, DerefOf (Index (SSDT, 0x0D)), DerefOf (Index (SSDT, 0x0E)))
-                        Load (HWP0, HW0)
+                        Load (HWP0, HW0) /* \_SB_.PR00.HW0_ */
                         If (And (CFGD, 0x00800000))
                         {
                             OperationRegion (HWPL, SystemMemory, DerefOf (Index (SSDT, 0x13)), DerefOf (Index (SSDT, 0x14)))
-                            Load (HWPL, HW2)
+                            Load (HWPL, HW2) /* \_SB_.PR00.HW2_ */
                         }
                     }
 
@@ -304,13 +307,13 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     {
                         If (LNot (And (\_SB.OSCP, 0x40)))
                         {
-                            Store (Zero, HWPV)
+                            Store (Zero, HWPV) /* \_SB_.HWPV */
                         }
                     }
 
                     If (And (\_SB.OSCP, 0x40))
                     {
-                        Store (0x02, HWPV)
+                        Store (0x02, HWPV) /* \_SB_.HWPV */
                     }
                 }
             }
@@ -323,14 +326,15 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (LNot (And (PC00, 0x1000)))
             {
-                Store (HWPS, IOB2)
+                Store (HWPS, IOB2) /* \_SB_.PR00.GCAP.IOB2 */
             }
 
-            If (LAnd (LAnd (And (\_SB.CFGD, 0x02000000), And (\_SB.CFGD, 0x00400000)), LNotEqual (\_SB.OBIN, Zero)))
+            If (LAnd (LAnd (And (\_SB.CFGD, 0x02000000), And (\_SB.CFGD, 0x00400000)), 
+                LNotEqual (\_SB.OBIN, Zero)))
             {
                 If (And (\_SB.OSCP, 0x1000))
                 {
-                    Store (ITBS, IOB2)
+                    Store (ITBS, IOB2) /* \_SB_.PR00.GCAP.IOB2 */
                 }
             }
 
@@ -368,11 +372,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST01, One))
             {
-                And (CP01, 0x0BFF, CP01)
+                And (CP01, 0x0BFF, CP01) /* \_SB_.PR01.GCAP.CP01 */
                 Return (Zero)
             }
 
-            Or (And (PC01, 0x7FFFFFFF), CP01, PC01)
+            Or (And (PC01, 0x7FFFFFFF), CP01, PC01) /* \PC01 */
             If (LEqual (And (PC01, 0x09), 0x09))
             {
                 APPT ()
@@ -393,7 +397,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 APCT ()
             }
 
-            Store (PC01, PC00)
+            Store (PC01, PC00) /* \PC00 */
             Return (Zero)
         }
 
@@ -401,9 +405,9 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
         {
             If (LAnd (And (CFGD, 0x7A), LNot (And (SDTL, 0x20))))
             {
-                Or (SDTL, 0x20, SDTL)
+                Or (SDTL, 0x20, SDTL) /* \SDTL */
                 OperationRegion (CST1, SystemMemory, DerefOf (Index (SSDT, 0x0A)), DerefOf (Index (SSDT, 0x0B)))
-                Load (CST1, HC1)
+                Load (CST1, HC1) /* \_SB_.PR01.HC1_ */
             }
         }
 
@@ -411,19 +415,20 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
         {
             If (LAnd (And (CFGD, One), LNot (And (SDTL, 0x10))))
             {
-                Or (SDTL, 0x10, SDTL)
+                Or (SDTL, 0x10, SDTL) /* \SDTL */
                 OperationRegion (IST1, SystemMemory, DerefOf (Index (SSDT, 0x04)), DerefOf (Index (SSDT, 0x05)))
-                Load (IST1, HI1)
+                Load (IST1, HI1) /* \_SB_.PR01.HI1_ */
             }
         }
 
         Method (APPS, 0, Serialized)
         {
-            If (LAnd (LOr (And (CFGD, One), And (CFGD, 0x00400000)), LNot (And (SDTL, 0x0200))))
+            If (LAnd (LOr (And (CFGD, One), And (CFGD, 0x00400000)), LNot (
+                And (SDTL, 0x0200))))
             {
-                Or (SDTL, 0x0200, SDTL)
+                Or (SDTL, 0x0200, SDTL) /* \SDTL */
                 OperationRegion (PSD1, SystemMemory, DerefOf (Index (SSDT, 0x19)), DerefOf (Index (SSDT, 0x1A)))
-                Load (PSD1, HP1)
+                Load (PSD1, HP1) /* \_SB_.PR01.HP1_ */
             }
         }
 
@@ -433,9 +438,9 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
             {
                 If (LAnd (And (CFGD, 0x00400000), LNot (And (SDTL, 0x80))))
                 {
-                    Or (SDTL, 0x80, SDTL)
+                    Or (SDTL, 0x80, SDTL) /* \SDTL */
                     OperationRegion (HWP1, SystemMemory, DerefOf (Index (SSDT, 0x10)), DerefOf (Index (SSDT, 0x11)))
-                    Load (HWP1, HW1)
+                    Load (HWP1, HW1) /* \_SB_.PR01.HW1_ */
                 }
             }
         }
@@ -467,11 +472,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST02, One))
             {
-                And (CP02, 0x0BFF, CP02)
+                And (CP02, 0x0BFF, CP02) /* \_SB_.PR02.GCAP.CP02 */
                 Return (Zero)
             }
 
-            Or (And (PC02, 0x7FFFFFFF), CP02, PC02)
+            Or (And (PC02, 0x7FFFFFFF), CP02, PC02) /* \PC02 */
             If (LEqual (And (PC02, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -492,7 +497,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC02, PC00)
+            Store (PC02, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -523,11 +528,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST03, One))
             {
-                And (CP03, 0x0BFF, CP03)
+                And (CP03, 0x0BFF, CP03) /* \_SB_.PR03.GCAP.CP03 */
                 Return (Zero)
             }
 
-            Or (And (PC03, 0x7FFFFFFF), CP03, PC03)
+            Or (And (PC03, 0x7FFFFFFF), CP03, PC03) /* \PC03 */
             If (LEqual (And (PC03, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -548,7 +553,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC03, PC00)
+            Store (PC03, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -579,11 +584,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST04, One))
             {
-                And (CP04, 0x0BFF, CP04)
+                And (CP04, 0x0BFF, CP04) /* \_SB_.PR04.GCAP.CP04 */
                 Return (Zero)
             }
 
-            Or (And (PC04, 0x7FFFFFFF), CP04, PC04)
+            Or (And (PC04, 0x7FFFFFFF), CP04, PC04) /* \PC04 */
             If (LEqual (And (PC04, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -604,7 +609,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC04, PC00)
+            Store (PC04, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -635,11 +640,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST05, One))
             {
-                And (CP05, 0x0BFF, CP05)
+                And (CP05, 0x0BFF, CP05) /* \_SB_.PR05.GCAP.CP05 */
                 Return (Zero)
             }
 
-            Or (And (PC05, 0x7FFFFFFF), CP05, PC05)
+            Or (And (PC05, 0x7FFFFFFF), CP05, PC05) /* \PC05 */
             If (LEqual (And (PC05, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -660,7 +665,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC05, PC00)
+            Store (PC05, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -691,11 +696,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST06, One))
             {
-                And (CP06, 0x0BFF, CP06)
+                And (CP06, 0x0BFF, CP06) /* \_SB_.PR06.GCAP.CP06 */
                 Return (Zero)
             }
 
-            Or (And (PC06, 0x7FFFFFFF), CP06, PC06)
+            Or (And (PC06, 0x7FFFFFFF), CP06, PC06) /* \PC06 */
             If (LEqual (And (PC06, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -716,7 +721,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC06, PC00)
+            Store (PC06, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -747,11 +752,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST07, One))
             {
-                And (CP07, 0x0BFF, CP07)
+                And (CP07, 0x0BFF, CP07) /* \_SB_.PR07.GCAP.CP07 */
                 Return (Zero)
             }
 
-            Or (And (PC07, 0x7FFFFFFF), CP07, PC07)
+            Or (And (PC07, 0x7FFFFFFF), CP07, PC07) /* \PC07 */
             If (LEqual (And (PC07, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -772,7 +777,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC07, PC00)
+            Store (PC07, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -803,11 +808,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST08, One))
             {
-                And (CP08, 0x0BFF, CP08)
+                And (CP08, 0x0BFF, CP08) /* \_SB_.PR08.GCAP.CP08 */
                 Return (Zero)
             }
 
-            Or (And (PC08, 0x7FFFFFFF), CP08, PC08)
+            Or (And (PC08, 0x7FFFFFFF), CP08, PC08) /* \PC08 */
             If (LEqual (And (PC08, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -828,7 +833,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC08, PC00)
+            Store (PC08, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -859,11 +864,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST09, One))
             {
-                And (CP09, 0x0BFF, CP09)
+                And (CP09, 0x0BFF, CP09) /* \_SB_.PR09.GCAP.CP09 */
                 Return (Zero)
             }
 
-            Or (And (PC09, 0x7FFFFFFF), CP09, PC09)
+            Or (And (PC09, 0x7FFFFFFF), CP09, PC09) /* \PC09 */
             If (LEqual (And (PC09, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -884,7 +889,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC09, PC00)
+            Store (PC09, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -915,11 +920,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST10, One))
             {
-                And (ST10, 0x0BFF, CP10)
+                And (ST10, 0x0BFF, CP10) /* \_SB_.PR10.GCAP.CP10 */
                 Return (Zero)
             }
 
-            Or (And (PC10, 0x7FFFFFFF), CP10, PC10)
+            Or (And (PC10, 0x7FFFFFFF), CP10, PC10) /* \PC10 */
             If (LEqual (And (PC10, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -940,7 +945,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC10, PC00)
+            Store (PC10, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -971,11 +976,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST11, One))
             {
-                And (ST11, 0x0BFF, CP11)
+                And (ST11, 0x0BFF, CP11) /* \_SB_.PR11.GCAP.CP11 */
                 Return (Zero)
             }
 
-            Or (And (PC11, 0x7FFFFFFF), CP11, PC11)
+            Or (And (PC11, 0x7FFFFFFF), CP11, PC11) /* \PC11 */
             If (LEqual (And (PC11, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -996,7 +1001,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC11, PC00)
+            Store (PC11, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -1027,11 +1032,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST12, One))
             {
-                And (ST12, 0x0BFF, CP12)
+                And (ST12, 0x0BFF, CP12) /* \_SB_.PR12.GCAP.CP12 */
                 Return (Zero)
             }
 
-            Or (And (PC12, 0x7FFFFFFF), CP12, PC12)
+            Or (And (PC12, 0x7FFFFFFF), CP12, PC12) /* \PC12 */
             If (LEqual (And (PC12, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -1052,7 +1057,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC12, PC00)
+            Store (PC12, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -1083,11 +1088,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST13, One))
             {
-                And (ST13, 0x0BFF, CP13)
+                And (ST13, 0x0BFF, CP13) /* \_SB_.PR13.GCAP.CP13 */
                 Return (Zero)
             }
 
-            Or (And (PC13, 0x7FFFFFFF), CP13, PC13)
+            Or (And (PC13, 0x7FFFFFFF), CP13, PC13) /* \PC13 */
             If (LEqual (And (PC13, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -1108,7 +1113,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC13, PC00)
+            Store (PC13, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -1139,11 +1144,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST14, One))
             {
-                And (ST14, 0x0BFF, CP14)
+                And (ST14, 0x0BFF, CP14) /* \_SB_.PR14.GCAP.CP14 */
                 Return (Zero)
             }
 
-            Or (And (PC14, 0x7FFFFFFF), CP14, PC14)
+            Or (And (PC14, 0x7FFFFFFF), CP14, PC14) /* \PC14 */
             If (LEqual (And (PC14, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -1164,7 +1169,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC14, PC00)
+            Store (PC14, PC00) /* \PC00 */
             Return (Zero)
         }
     }
@@ -1195,11 +1200,11 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             If (And (ST15, One))
             {
-                And (ST15, 0x0BFF, CP15)
+                And (ST15, 0x0BFF, CP15) /* \_SB_.PR15.GCAP.CP15 */
                 Return (Zero)
             }
 
-            Or (And (PC15, 0x7FFFFFFF), CP15, PC15)
+            Or (And (PC15, 0x7FFFFFFF), CP15, PC15) /* \PC15 */
             If (LEqual (And (PC15, 0x09), 0x09))
             {
                 \_SB.PR01.APPT ()
@@ -1220,7 +1225,7 @@ DefinitionBlock ("", "SSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                 \_SB.PR01.APCT ()
             }
 
-            Store (PC15, PC00)
+            Store (PC15, PC00) /* \PC00 */
             Return (Zero)
         }
     }
