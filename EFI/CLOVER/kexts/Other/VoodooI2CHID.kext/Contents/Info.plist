@@ -48,7 +48,7 @@
 			<string>VoodooI2CSensorHubEnabler</string>
 			<key>IONameMatch</key>
 			<array>
-				<string>INT33D0</string>
+				<string>INT34BB</string>
 			</array>
 			<key>IOProviderClass</key>
 			<string>IOACPIPlatformDevice</string>
@@ -367,7 +367,7 @@
 			<key>IOPropertyMatch</key>
 			<dict>
 				<key>name</key>
-				<string>SYNA3602</string>
+				<string>SYNACD3E</string>
 			</dict>
 			<key>IOProviderClass</key>
 			<string>VoodooI2CDeviceNub</string>

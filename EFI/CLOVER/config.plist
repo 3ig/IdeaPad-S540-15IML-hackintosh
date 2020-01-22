@@ -69,16 +69,6 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change HDAS to HDEF</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>SERBUw==</data>
-					<key>Replace</key>
-					<data>SERFRg==</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
 					<string>change HECI to IMEI</string>
 					<key>Disabled</key>
 					<false/>
@@ -224,14 +214,14 @@
 			<dict>
 				<key>AAPL,slot-name</key>
 				<string>Internal</string>
+				<key>device-id</key>
+				<data>yJ0AAA==</data>
+				<key>layout-id</key>
+				<data>CwAAAA==</data>
 				<key>device_type</key>
 				<string>Multimedia audio controller</string>
 				<key>hda-gfx</key>
 				<string>onboard-1</string>
-				<key>layout-id</key>
-				<integer>11</integer>
-				<key>model</key>
-				<string>ALC257 layout-id:11</string>
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
@@ -379,25 +369,6 @@
 		<true/>
 		<key>KernelPm</key>
 		<true/>
-		<key>KextsToPatch</key>
-		<array>
-			<dict>
-				<key>Comment</key>
-				<string>DVMT for AppleIntelCFLGraphicsFramebuffer﻿ (Credits DalianSky) for 10.15.x</string>
-				<key>Disabled</key>
-				<false/>
-				<key>Find</key>
-				<data>D4KnAwAA</data>
-				<key>InfoPlistPatch</key>
-				<false/>
-				<key>MatchOS</key>
-				<string>10.15.x</string>
-				<key>Name</key>
-				<string>AppleIntelCFLGraphicsFramebuffer</string>
-				<key>Replace</key>
-				<data>D4IAAAAA</data>
-			</dict>
-		</array>
 	</dict>
 	<key>RtVariables</key>
 	<dict>

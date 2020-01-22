@@ -87,7 +87,7 @@
 			<string>VoodooGPIOSunrisePointLP</string>
 			<key>IONameMatch</key>
 			<array>
-				<string>INT344B</string>
+				<string>INT34BB</string>
 			</array>
 			<key>IOProviderClass</key>
 			<string>IOService</string>

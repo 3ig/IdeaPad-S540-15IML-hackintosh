@@ -16,7 +16,7 @@
 #### Current status:
 Working:
 - Intel Graphics (MX250 disabled) (HDMI works)
-- Sound / Mic (mic is noisy install VoodooHDA PrefPane to tweak its input volume)
+- Sound / Mic 
 - Keyboard
 - Card reader
 - Camera
@@ -28,7 +28,7 @@ Working:
 Not working:
 - Sleep / Wake (use to work ... kind of... now it can't wake up)
 - Touchpad (VoodooI2C still can't play nice with CometLake I2C Controllers )
-- Fingerprint reader (recognised but can't be used)
+- Fingerprint reader (recognised but can't be used) (DISABLED)
 - Bluetooth / Wifi (currently using an USB WiFi)
 - Micron 2200 NVMe SSD (this is not even working on real Apple hardware)
 
