@@ -38,5 +38,5 @@ If you have a compatable NVMe SSD remove SSDT_NVMe-Pcc.aml from /CLOVER/ACPI/Pat
 ###### NOTE2: 
 Bios version CNCN11WW forces RST storage controller mode on the SATA drive so i added SATA-RAID-unsupported.kext to boot my system. Even if you are installed on the nvme drive you need this kext to see and open sata devices in osx.
 ###### NOTE3:
-Huge kudos to Tomas Saduikis (neblogas) for his patch:
+Huge kudos to https://github.com/phu54321 for his patch:
 https://www.notion.so/Using-VoodooI2C-on-comet-lake-cpu-e-g-i5-10210u-142930887087445eaa533120455da5dc
