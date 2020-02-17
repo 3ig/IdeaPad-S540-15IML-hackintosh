@@ -18,6 +18,7 @@ Working:
 - Intel Graphics (MX250 disabled) (HDMI works)
 - Sound / Mic 
 - Keyboard
+- Touchpad (Using a patched VoodooI2C ... see NOTE3)
 - Card reader
 - Camera
 - USBs
@@ -26,8 +27,7 @@ Working:
 - Power managment
 
 Not working:
-- Sleep / Wake (use to work ... kind of... now it can't wake up)
-- Touchpad (VoodooI2C still can't play nice with CometLake I2C Controllers )
+- Sleep / Wake (sleeps but can't wake up)
 - Fingerprint reader (recognised but can't be used) (DISABLED)
 - Bluetooth / Wifi (currently using an USB WiFi)
 - Micron 2200 NVMe SSD (this is not even working on real Apple hardware)
@@ -37,3 +37,6 @@ Not working:
 If you have a compatable NVMe SSD remove SSDT_NVMe-Pcc.aml from /CLOVER/ACPI/Patched
 ###### NOTE2: 
 Bios version CNCN11WW forces RST storage controller mode on the SATA drive so i added SATA-RAID-unsupported.kext to boot my system. Even if you are installed on the nvme drive you need this kext to see and open sata devices in osx.
+###### NOTE3:
+Huge kudos to Tomas Saduikis (neblogas) for his patch:
+https://www.notion.so/Using-VoodooI2C-on-comet-lake-cpu-e-g-i5-10210u-142930887087445eaa533120455da5dc
