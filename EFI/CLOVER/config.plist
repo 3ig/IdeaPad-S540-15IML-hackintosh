@@ -16,57 +16,31 @@
 			<dict>
 				<key>Comment-IRQ Fix</key>
 				<string>The following fixes may be needed for onboard audio/USB/etc</string>
+				<key>DeleteUnused</key>
+				<true/>
+				<key>FixAirport</key>
+				<false/>
 				<key>FixHPET</key>
 				<false/>
 				<key>FixIPIC</key>
 				<false/>
+				<key>FixMutex</key>
+				<true/>
 				<key>FixRTC</key>
 				<false/>
+				<key>FixRegions</key>
+				<true/>
+				<key>FixS3D</key>
+				<true/>
+				<key>FixShutdown</key>
+				<false/>
 				<key>FixTMR</key>
+				<false/>
+				<key>FixUSB</key>
 				<false/>
 			</dict>
 			<key>Patches</key>
 			<array>
-				<dict>
-					<key>Comment</key>
-					<string>change OSID to XSID (to avoid match against _OSI XOSI patch)</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>T1NJRA==</data>
-					<key>Replace</key>
-					<data>WFNJRA==</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _OSI to XOSI</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>X09TSQ==</data>
-					<key>Replace</key>
-					<data>WE9TSQ==</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change _DSM to XDSM</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>X0RTTQ==</data>
-					<key>Replace</key>
-					<data>WERTTQ==</data>
-				</dict>
-				<dict>
-					<key>Comment</key>
-					<string>change H_EC to EC</string>
-					<key>Disabled</key>
-					<false/>
-					<key>Find</key>
-					<data>SF9FQw==</data>
-					<key>Replace</key>
-					<data>RUNfXw==</data>
-				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change HECI to IMEI</string>
@@ -79,13 +53,43 @@
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change GFX0 to IGPU</string>
+					<string>change Method(GPRW,2,N) to XPRW, pair with SSDT-GPRW.aml</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>R0ZYMA==</data>
+					<data>R1BSVwI=</data>
 					<key>Replace</key>
-					<data>SUdQVQ==</data>
+					<data>WFBSVwI=</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>change _OSI to XOSI, pair with SSDT-XOSI.aml</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>X09TSQ==</data>
+					<key>Replace</key>
+					<data>WE9TSQ==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Rename XHCI to XHC (USB)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>WEhDSQ==</data>
+					<key>Replace</key>
+					<data>WEhDXw==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>Rename H_EC to EC (USB Power)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>SF9FQw==</data>
+					<key>Replace</key>
+					<data>RUNfXw==</data>
 				</dict>
 			</array>
 		</dict>
@@ -132,7 +136,7 @@
 		<key>#DefaultVolume</key>
 		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>dart=0 plugin-type=1 -v</string>
+		<string>dart=0 plugin-type=1 -v darkwake=8</string>
 		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
@@ -216,25 +220,19 @@
 				<string>Internal</string>
 				<key>device-id</key>
 				<data>yJ0AAA==</data>
-				<key>layout-id</key>
-				<data>CwAAAA==</data>
 				<key>device_type</key>
 				<string>Multimedia audio controller</string>
 				<key>hda-gfx</key>
 				<string>onboard-1</string>
+				<key>layout-id</key>
+				<data>CwAAAA==</data>
 			</dict>
 			<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 			<dict>
-				<key>AAPL,GfxYTile</key>
-				<data>AQAAAA==</data>
 				<key>AAPL,ig-platform-id</key>
 				<data>AACbPg==</data>
-				<key>AAPL,slot-name</key>
-				<string>Internal@0,2,0</string>
 				<key>device-id</key>
 				<data>mz4AAA==</data>
-				<key>device_type</key>
-				<string>Display controller</string>
 				<key>disable-external-gpu</key>
 				<data>AQAAAA==</data>
 				<key>enable-hdmi20</key>
@@ -257,8 +255,6 @@
 				<data>AQAAAA==</data>
 				<key>framebuffer-stolenmem</key>
 				<data>AAAwAQ==</data>
-				<key>hda-gfx</key>
-				<string>onboard-1</string>
 				<key>model</key>
 				<string>Intel UHD Graphics 630 (Mobile)</string>
 			</dict>

@@ -5,7 +5,7 @@
  * 
  * Disassembling to non-symbolic legacy ASL operators
  *
- * Disassembly of DSDT.aml, Fri Jan  3 13:11:57 2020
+ * Disassembly of DSDT.aml, Mon Feb 10 23:48:33 2020
  *
  * Original Table Header:
  *     Signature        "DSDT"
@@ -24338,7 +24338,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     Store (0x07DD, OSYS) /* \OSYS */
                 }
 
-                If(LOr(_OSI("Darwin"),_OSI("Windows 2015")))
+                If (_OSI ("Windows 2015"))
                 {
                     Store (0x07DF, OSYS) /* \OSYS */
                 }
@@ -49489,7 +49489,7 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
                     "\\_SB.PCI0.GPI0", 0x00, ResourceConsumer, ,
                     )
                     {   // Pin list
-                        0x1C
+                        0x0000
                     }
             })
             Name (SBFI, ResourceTemplate ()
@@ -49579,7 +49579,17 @@ DefinitionBlock ("", "DSDT", 2, "LENOVO", "CB-01   ", 0x00000001)
 
             Method (_CRS, 0, NotSerialized)  // _CRS: Current Resource Settings
             {
-                Return (ConcatenateResTemplate (SBFB, SBFI))
+                If (LLess (OSYS, 0x07DC))
+                {
+                    Return (SBFI) /* \_SB_.PCI0.I2C0.TPD0.SBFI */
+                }
+
+                If (LEqual (TPDM, Zero))
+                {
+                    Return (ConcatenateResTemplate (I2CM (I2CX, BADR, SPED), SBFG))
+                }
+
+                Return (ConcatenateResTemplate (I2CM (I2CX, BADR, SPED), SBFI))
             }
         }
 
