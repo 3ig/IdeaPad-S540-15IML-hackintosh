@@ -43,17 +43,37 @@
 			<array>
 				<dict>
 					<key>Comment</key>
-					<string>change HECI to IMEI</string>
+					<string>_Q8E to XQ8E</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
-					<data>SEVDSQ==</data>
+					<data>X1E4RQ==</data>
 					<key>Replace</key>
-					<data>SU1FSQ==</data>
+					<data>WFE4RQ==</data>
 				</dict>
 				<dict>
 					<key>Comment</key>
-					<string>change Method(GPRW,2,N) to XPRW, pair with SSDT-GPRW.aml</string>
+					<string>_Q8F to XQ8F</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>X1E4Rg==</data>
+					<key>Replace</key>
+					<data>WFE4Rg==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>PNLF renamed XNLF</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>UE5MRg==</data>
+					<key>Replace</key>
+					<data>WE5MRg==</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>GPRW to XPRW</string>
 					<key>Disabled</key>
 					<false/>
 					<key>Find</key>
@@ -113,10 +133,10 @@
 	</dict>
 	<key>Boot</key>
 	<dict>
-		<key>#DefaultVolume</key>
-		<string>LastBootedVolume</string>
 		<key>Arguments</key>
-		<string>dart=0 plugin-type=1</string>
+		<string>dart=0 plugin-type=1 igfxonln=1 brcmfx-country=#a</string>
+		<key>DefaultVolume</key>
+		<string>OSX</string>
 		<key>NeverHibernate</key>
 		<true/>
 		<key>Secure</key>
@@ -194,6 +214,21 @@
 		</dict>
 		<key>Properties</key>
 		<dict>
+			<key>PciRoot(0x0)/Pci(0x1D,0x0)/Pci(0x0,0x0)</key>
+			<dict>
+				<key>AAPL,slot-name</key>
+				<string>WLAN</string>
+				<key>compatible</key>
+				<string>pci14e4,43a0</string>
+				<key>device_type</key>
+				<string>Airport Extreme</string>
+				<key>model</key>
+				<string>BCM4350 802.11ac Wireless Network Adapter</string>
+				<key>name</key>
+				<string>Airport</string>
+				<key>pci-aspm-default</key>
+				<integer>0</integer>
+			</dict>
 			<key>PciRoot(0x0)/Pci(0x1f,0x3)</key>
 			<dict>
 				<key>AAPL,slot-name</key>
@@ -213,8 +248,6 @@
 				<data>AACbPg==</data>
 				<key>device-id</key>
 				<data>mz4AAA==</data>
-				<key>disable-external-gpu</key>
-				<data>AQAAAA==</data>
 				<key>enable-hdmi20</key>
 				<data>AQAAAA==</data>
 				<key>enable-lspcon-support</key>
@@ -357,52 +390,8 @@
 	</dict>
 	<key>SMBIOS</key>
 	<dict>
-		<key>BiosReleaseDate</key>
-		<string>11/14/2019</string>
-		<key>BiosVendor</key>
-		<string>Apple Inc.</string>
-		<key>BiosVersion</key>
-		<string>MBP152.88Z.F000.B00.1911142159</string>
-		<key>Board-ID</key>
-		<string>Mac-827FB448E656EC26</string>
-		<key>BoardManufacturer</key>
-		<string>Apple Inc.</string>
-		<key>BoardSerialNumber</key>
-		<string>C028282704NJH4RAD</string>
-		<key>BoardType</key>
-		<integer>10</integer>
-		<key>BoardVersion</key>
-		<string>1.0</string>
-		<key>ChassisAssetTag</key>
-		<string>MacBook-Aluminum</string>
-		<key>ChassisManufacturer</key>
-		<string>Apple Inc.</string>
-		<key>ChassisType</key>
-		<string>0x09</string>
-		<key>EfiVersion</key>
-		<string>1037.60.58.0.0</string>
-		<key>Family</key>
-		<string>MacBook Pro</string>
-		<key>FirmwareFeatures</key>
-		<string>0xFC0FE137</string>
-		<key>FirmwareFeaturesMask</key>
-		<string>0xFF1FFF3F</string>
-		<key>LocationInChassis</key>
-		<string>Part Component</string>
-		<key>Manufacturer</key>
-		<string>Apple Inc.</string>
-		<key>Mobile</key>
-		<true/>
-		<key>PlatformFeature</key>
-		<string>0x02</string>
 		<key>ProductName</key>
 		<string>MacBookPro15,2</string>
-		<key>SerialNumber</key>
-		<string>C02X22ZNJHCD</string>
-		<key>SmUUID</key>
-		<string>B42C0F74-F1EC-4EE7-95A5-57A976E6F977</string>
-		<key>Version</key>
-		<string>1.0</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
