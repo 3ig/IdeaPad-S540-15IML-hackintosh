@@ -1,4 +1,4 @@
-# Lenovo IdeaPad S540-15IML (Catalina 10.15.4 hackintosh) bios version CNCN11WW
+# Lenovo IdeaPad S540-15IML (Catalina 10.15.7 hackintosh) still bios version CNCN11WW
 
 | Specifications | Details |
 |:-: |:-: |
@@ -35,7 +35,9 @@ Not working:
 
 I must say this machine turned out to be a way better hackintosh than i expected given the new 10gen hardware. It took some time but i got everything working smoothly with great battery life and a really fast pci-e card reader (that was kind of important for me).Performance is on par with with 2019 MacBook Pro 13 inch if not better in some cases. 
 
-I plan to update the machine to the latest CNCN12WW bios and move to OpenCore in the next month or so ....
+###### UPDATE: 
+OpenCore configuration it's up updated to latest version (kexts too) and fully functional. 
+I will not update Clover config going forward, but it will stay here in the repo in case someone wants to use Clover.
 
 ###### NOTE: 
 If you have a compatable NVMe SSD remove SSDT_NVMe-Pcc.aml from /CLOVER/ACPI/Patched

@@ -100,7 +100,15 @@
 				<key>Enabled</key>
 				<true/>
 				<key>Path</key>
-				<string>SSDT-XSPI</string>
+				<string>SSDT-XSPI.aml</string>
+			</dict>
+			<dict>
+				<key>Comment</key>
+				<string>SSDT-dGPU-Off.aml</string>
+				<key>Enabled</key>
+				<true/>
+				<key>Path</key>
+				<string>SSDT-dGPU-Off.aml</string>
 			</dict>
 		</array>
 		<key>Delete</key>
@@ -1071,62 +1079,26 @@
 		</dict>
 		<key>SMBIOS</key>
 		<dict>
-			<key>BIOSReleaseDate</key>
-			<string>10/04/2020</string>
-			<key>BIOSVendor</key>
-			<string></string>
-			<key>BIOSVersion</key>
-			<string>1554.40.33.0.0</string>
-			<key>BoardAssetTag</key>
-			<string>Base Board Asset Tag</string>
-			<key>BoardLocationInChassis</key>
-			<string>Part Component</string>
-			<key>BoardManufacturer</key>
-			<string></string>
-			<key>BoardProduct</key>
-			<string>Mac-5F9802EFE386AA28</string>
-			<key>BoardSerialNumber</key>
-			<string>C02029600QX00001F</string>
-			<key>BoardType</key>
-			<integer>10</integer>
-			<key>BoardVersion</key>
-			<string>MacBookPro16,2</string>
-			<key>ChassisAssetTag</key>
-			<string>Asset Tag#</string>
-			<key>ChassisManufacturer</key>
-			<string></string>
-			<key>ChassisSerialNumber</key>
-			<string>C02D3051ML7H</string>
-			<key>ChassisType</key>
-			<integer>9</integer>
-			<key>ChassisVersion</key>
-			<string>Mac-5F9802EFE386AA28</string>
-			<key>FirmwareFeatures</key>
-			<data>ZvCv/QAAAAA=</data>
-			<key>FirmwareFeaturesMask</key>
-			<data>f////wAAAAA=</data>
-			<key>MemoryFormFactor</key>
-			<integer>13</integer>
-			<key>PlatformFeature</key>
-			<integer>50</integer>
+			<key>AdviseWindows</key>
+			<false/>
+			<key>MLB</key>
+			<string>M0000000000000001</string>
 			<key>ProcessorType</key>
-			<integer>1793</integer>
-			<key>SmcVersion</key>
-			<data></data>
-			<key>SystemFamily</key>
-			<string>MacBook Pro</string>
-			<key>SystemManufacturer</key>
-			<string></string>
+			<integer>0</integer>
+			<key>ROM</key>
+			<data>
+			ESIzRFVm
+			</data>
+			<key>SpoofVendor</key>
+			<true/>
+			<key>SystemMemoryStatus</key>
+			<string>Auto</string>
 			<key>SystemProductName</key>
 			<string>MacBookPro16,2</string>
-			<key>SystemSKUNumber</key>
-			<string>System SKU#</string>
 			<key>SystemSerialNumber</key>
-			<string>C02D3051ML7H</string>
+			<string>W00000000001</string>
 			<key>SystemUUID</key>
-			<string>E68B180C-E37F-4EE5-89B8-899193A36927</string>
-			<key>SystemVersion</key>
-			<string>1.0</string>
+			<string>00000000-0000-0000-0000-000000000000</string>
 		</dict>
 		<key>UpdateDataHub</key>
 		<true/>
