@@ -1,4 +1,4 @@
-# Lenovo IdeaPad S540-15IML (Big Sur 11.1 hackintosh) for bios version CNCN11WW
+# Lenovo IdeaPad S540-15IML (Monterey 12.3 hackintosh) for bios version CNCN11WW
 
 | Specifications | Details |
 |:-: |:-: |
